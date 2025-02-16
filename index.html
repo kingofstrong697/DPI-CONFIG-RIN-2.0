@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>App Config Demo by RIN</title>
     <style>
         body {
             display: flex;
@@ -11,16 +11,14 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('https://source.unsplash.com/random/1920x1080'); /* URL của hình nền */
-            background-size: cover;
-            background-position: center;
+            background-color: #f0f0f0;
         }
         .panel {
             border: 1px solid #ccc;
             padding: 16px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); /* Màu gradient siêu đẹp */
+            background-color: #fff;
             text-align: center;
             width: 90%;
             max-width: 400px;
@@ -29,130 +27,68 @@
         .panel-heading {
             font-size: 1.25em;
             margin-bottom: 8px;
-            background: linear-gradient(45deg, #ff6ec4, #7873f5);
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .panel-body {
             font-size: 1em;
         }
-        .hidden {
-            display: none;
+        .option {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
         }
-        .btn {
-            padding: 8px 16px;
-            margin-top: 8px;
-            cursor: pointer;
-            border-radius: 12px; /* Làm nút hơi tròn */
-            color: black; /* Đổi màu chữ thành màu đen */
-            width: 100%;
-            max-width: 200px;
-            box-sizing: border-box;
-        }
-        .btn-login {
-            padding: 6px 12px;
-            max-width: 150px;
-        }
-        .btn-green {
-            background-color: green;
-            color: white;
-        }
-        input {
-            padding: 12px;
-            border-radius: 12px; /* Làm ô nhập liệu tròn hơn */
-            border: 1px solid #ccc;
-            width: 100%;
-            max-width: 300px;
-            box-sizing: border-box;
-        }
-        input::placeholder {
-            color: #aaa;
-        }
-        .gradient-text {
-            background: linear-gradient(45deg, #ff6ec4, #7873f5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .option input {
+            margin-right: 8px;
         }
     </style>
 </head>
 <body>
-    <div id="panel1" class="panel">
-        <div class="panel-heading gradient-text">App Config by RIN</div>
+    <div class="panel">
+        <div class="panel-heading">APP CONFIG DEMO BY RIN</div>
         <div class="panel-body">
-            <input type="text" id="username" placeholder="Nhập tài khoản"><br><br>
-            <input type="password" id="password" placeholder="Nhập mật khẩu"><br><br>
-            <button class="btn btn-login" onclick="login()">Đăng nhập</button><br><br>
-        </div>
-    </div>
-
-    <div id="panel2" class="panel hidden">
-        <div class="panel-heading gradient-text">Welcome to App Config 2.0 - Admin Rin</div>
-        <div class="panel-body">
-            <button id="optimizeBtn" class="btn" onclick="optimize()">Optimized DPI Config 2.0</button><br><br>
-            <button id="zenithBoostBtn" class="btn" onclick="zenithBoost()">Zenith Boost Device 2.0</button><br><br>
-            <button id="noRecoilBtn" class="btn" onclick="noRecoil()">Automatic Norecoil 2.0</button><br><br>
-            <button id="fakeAimBtn" class="btn" onclick="fakeAim()">Fake Aim xPanel</button><br><br>
-            <button id="downloadConfigBtn" class="btn" onclick="downloadConfig()">Download Config on Device</button><br><br>
-            <button id="boostCpuBtn" class="btn" onclick="boostCpu()">Boost CPU on Device</button><br><br>
-            <button id="changeRestoreBtn" class="btn" onclick="changeRestore()">Change Restore Setting VIP on Device</button><br><br>
-            <input type="text" id="deviceInput" placeholder="Nhập thiết bị cần tối ưu hóa"><br><br>
-            <button id="optimizeDeviceBtn" class="btn" onclick="optimizeDevice()">Tối ưu hóa thiết bị</button><br><br>
-            <div class="gradient-text">Dev: Rin</div>
+            <div class="option">
+                <label for="device">Thiết bị:</label>
+                <span id="device"></span>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="fixLag" onclick="toggleFixLag()">
+                <label for="fixLag">FIX LAG</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="lightAim" onclick="toggleLightAim()">
+                <label for="lightAim">NHẸ TÂM 50%</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="changeDevice" onclick="toggleChangeDevice()">
+                <label for="changeDevice">CHANGE DEVICE</label>
+            </div>
         </div>
     </div>
 
     <script>
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            if (username === 'rin' && password === '1') {
-                document.getElementById('panel1').classList.add('hidden');
-                document.getElementById('panel2').classList.remove('hidden');
-            } else {
-                alert('Sai tài khoản hoặc mật khẩu');
+        document.getElementById('device').textContent = navigator.userAgent;
+
+        function toggleFixLag() {
+            const fixLag = document.getElementById('fixLag');
+            if (fixLag.checked) {
+                alert('Đã kích hoạt FIX LAG');
             }
         }
 
-        function optimize() {
-            const optimizeBtn = document.getElementById('optimizeBtn');
-            optimizeBtn.classList.add('btn-green');
+        function toggleLightAim() {
+            const lightAim = document.getElementById('lightAim');
+            if (lightAim.checked) {
+                alert('Đã kích hoạt NHẸ TÂM 50%');
+            }
         }
 
-        function zenithBoost() {
-            const zenithBoostBtn = document.getElementById('zenithBoostBtn');
-            zenithBoostBtn.classList.add('btn-green');
-        }
-
-        function noRecoil() {
-            const noRecoilBtn = document.getElementById('noRecoilBtn');
-            noRecoilBtn.classList.add('btn-green');
-        }
-
-        function fakeAim() {
-            const fakeAimBtn = document.getElementById('fakeAimBtn');
-            fakeAimBtn.classList.add('btn-green');
-        }
-
-        function downloadConfig() {
-            const downloadConfigBtn = document.getElementById('downloadConfigBtn');
-            downloadConfigBtn.classList.add('btn-green');
-        }
-
-        function boostCpu() {
-            const boostCpuBtn = document.getElementById('boostCpuBtn');
-            boostCpuBtn.classList.add('btn-green');
-        }
-
-        function changeRestore() {
-            const changeRestoreBtn = document.getElementById('changeRestoreBtn');
-            changeRestoreBtn.classList.add('btn-green');
-        }
-
-        function optimizeDevice() {
-            const deviceInput = document.getElementById('deviceInput').value;
-            alert(`Đã buff max hiệu xuất cho thiết bị: ${deviceInput}`);
-            const optimizeDeviceBtn = document.getElementById('optimizeDeviceBtn');
-            optimizeDeviceBtn.classList.add('btn-green');
+        function toggleChangeDevice() {
+            const changeDevice = document.getElementById('changeDevice');
+            if (changeDevice.checked) {
+                alert('Đã CHANGE thiết bị');
+            }
         }
     </script>
 </body>
